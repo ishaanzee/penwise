@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Penwise – Fill & sign PDFs right in Chrome</title>
+  <meta name="description" content="Fill, sign and annotate PDFs in Chrome. Free, no account, and your files never leave your computer.">
+  <link rel="icon" href="favicon.png">
+  <meta property="og:title" content="Penwise – Fill & sign PDFs right in Chrome">
+  <meta property="og:description" content="Free, private PDF filling and signing. Your files never leave your computer.">
+  <meta property="og:image" content="images/1-fill-sign.jpg">
+  <style>
+    :root {
+      --bg: #f6f7fb; --surface: #fff; --text: #141a2e; --muted: #555d72; --border: #e1e4ec;
+      --accent: #2f5bea; --accent-dark: #2442c9; --gold: #f5b400;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { --bg: #0f1220; --surface: #181c2e; --text: #eef0f7; --muted: #a3aac0; --border: #2a2f45; }
+    }
+    :root[data-theme="dark"] { --bg: #0f1220; --surface: #181c2e; --text: #eef0f7; --muted: #a3aac0; --border: #2a2f45; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 -apple-system, "Segoe UI", Roboto, sans-serif; }
+    a { color: var(--accent); }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    header.nav { display: flex; align-items: center; gap: 10px; padding: 18px 0; }
+    header.nav img { width: 32px; height: 32px; }
+    header.nav b { font-size: 19px; }
+    header.nav nav { margin-left: auto; display: flex; gap: 22px; font-size: 15px; }
+    header.nav nav a { color: var(--muted); text-decoration: none; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 10px; font-weight: 650;
+           text-decoration: none; background: var(--accent); color: #fff; }
+    .btn:hover { background: var(--accent-dark); }
+    .hero { text-align: center; padding: 56px 0 32px; }
+    .hero h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 18px; }
+    .hero p { font-size: 20px; color: var(--muted); max-width: 640px; margin: 0 auto 28px; }
+    .hero small { display: block; margin-top: 12px; color: var(--muted); font-size: 14px; }
+    .shot { margin: 40px auto 0; max-width: 1000px; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 80px rgba(30,45,110,.22); }
+    .shot img { width: 100%; display: block; }
+    section { padding: 64px 0; }
+    h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.02em; text-align: center; margin: 0 0 36px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+    .feature { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: center; margin-bottom: 56px; }
+    .feature:nth-child(even) .text { order: 2; }
+    .feature h3 { font-size: 28px; letter-spacing: -0.02em; margin: 0 0 10px; }
+    .feature p { color: var(--muted); margin: 0; }
+    .feature img { width: 100%; border-radius: 12px; box-shadow: 0 16px 40px rgba(30,45,110,.16); }
+    .pro-tag { display: inline-block; background: var(--gold); color: #3a2a00; font-size: 12px; font-weight: 800; padding: 1px 7px; border-radius: 5px; vertical-align: middle; margin-left: 6px; }
+    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 780px; margin: 0 auto; }
+    .plan { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+    .plan.pro { border: 2px solid var(--accent); }
+    .plan h3 { margin: 0; font-size: 20px; }
+    .price { font-size: 40px; font-weight: 750; margin: 8px 0 4px; letter-spacing: -0.02em; }
+    .price span { font-size: 16px; font-weight: 500; color: var(--muted); }
+    .plan ul { padding-left: 0; list-style: none; margin: 18px 0 0; display: grid; gap: 8px; }
+    .plan li::before { content: "✓  "; color: #1a9a5a; font-weight: 700; }
+    details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; }
+    summary { font-weight: 650; cursor: pointer; }
+    details p { color: var(--muted); margin: 10px 0 0; }
+    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 14px; display: flex; gap: 18px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .feature { grid-template-columns: 1fr; gap: 18px; }
+      .feature:nth-child(even) .text { order: 0; }
+      header.nav nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <img src="images/icon.png" alt=""><b>Penwise</b>
+      <nav><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#help">Help</a><a href="privacy.html">Privacy</a></nav>
+    </header>
+
+    <div class="hero">
+      <h1>Fill &amp; sign PDFs<br>right in Chrome</h1>
+      <p>Type into forms, add your signature and download, all in a few clicks. Free, with no account, and your files never leave your computer.</p>
+      <a class="btn" id="storeLink" href="#features">Coming soon to the Chrome Web Store</a>
+      <small>No sign-up · No watermark · No upload</small>
+      <div class="shot"><img src="images/1-fill-sign.jpg" alt="Penwise filling and signing a rental application"></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>Why people switch to Penwise</h2>
+      <div class="grid">
+        <div class="card"><h3>Free means free</h3><p>Filling, signing and downloading are free with no watermark. You won't hit a paywall after you've filled out the whole form.</p></div>
+        <div class="card"><h3>Private by design</h3><p>Your PDFs are processed inside your browser. Nothing is uploaded, so nothing can leak.</p></div>
+        <div class="card"><h3>Works on local files</h3><p>Open PDFs from your computer, from a website, or from a link you right-click.</p></div>
+        <div class="card"><h3>Fast</h3><p>Opens straight into the document. No account, no loading screen, no upsell maze.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="feature">
+        <div class="text"><h3>Your signature, your way</h3><p>Draw it with your mouse or trackpad, type it in a handwriting font, or upload a photo. We remove the white background for you. Saved signatures stay on your device.</p></div>
+        <img src="images/2-signature.jpg" alt="Signature dialog with drawn, typed and uploaded options">
+      </div>
+      <div class="feature">
+        <div class="text"><h3>Redact for real <span class="pro-tag">PRO</span></h3><p>Black boxes in most editors only cover text, and anyone can copy it back out. Penwise removes it from the file for good.</p></div>
+        <img src="images/4-redact.jpg" alt="A bank statement with account details redacted">
+      </div>
+      <div class="feature">
+        <div class="text"><h3>Organize &amp; merge <span class="pro-tag">PRO</span></h3><p>Reorder, rotate and delete pages, or combine several PDFs into one, by dragging and dropping.</p></div>
+        <img src="images/5-pages.jpg" alt="Page organizer with thumbnails">
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <h2>Simple pricing</h2>
+      <div class="pricing">
+        <div class="plan">
+          <h3>Free</h3>
+          <div class="price">$0 <span>forever</span></div>
+          <ul><li>Fill any PDF form</li><li>Draw, type or upload signatures</li><li>Text, dates, initials, checks</li><li>Highlight &amp; white-out</li><li>Download &amp; print, with no watermark</li></ul>
+        </div>
+        <div class="plan pro">
+          <h3>Pro</h3>
+          <div class="price">$9.99 <span>one-time</span></div>
+          <ul><li>Everything in Free</li><li>True redaction</li><li>Reorder, rotate &amp; delete pages</li><li>Merge PDFs</li><li>No subscription. Pay once, keep it.</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="help">
+    <div class="wrap" style="max-width: 760px">
+      <h2>Questions</h2>
+      <details><summary>Are my files uploaded anywhere?</summary><p>No. Penwise opens, edits and saves PDFs entirely inside your browser. The only thing it ever contacts is our payment provider (ExtensionPay), to check whether Pro is unlocked, and your documents are never part of that.</p></details>
+      <details><summary>How do I open a PDF?</summary><p>Click the Penwise icon in your toolbar and drop in a file. If a PDF is already open in a tab, clicking the icon opens that PDF. You can also right-click any PDF link and choose "Fill &amp; sign this PDF with Penwise".</p></details>
+      <details><summary>Why does Penwise ask for access to a website?</summary><p>When you open a PDF from a website, Chrome needs your OK for Penwise to download that one file. It asks one site at a time, and only when you request it.</p></details>
+      <details><summary>Is a typed or drawn signature legally binding?</summary><p>In many places, including the US (ESIGN Act) and the EU (eIDAS), simple electronic signatures are generally valid for everyday agreements. Some documents require more. If in doubt, check with the person asking for your signature.</p></details>
+      <details><summary>I paid for Pro on another computer. How do I unlock it here?</summary><p>Click any Pro feature, then "Already paid? Log in" and enter the email you paid with.</p></details>
+      <details><summary>Can I get a refund?</summary><p>Yes. If Pro doesn't work for you, email us within 14 days for a full refund.</p></details>
+      <details><summary>Something isn't working</summary><p>Email <a href="mailto:penwise.help@gmail.com">penwise.help@gmail.com</a> with what you tried and, if you can, a screenshot. We read everything.</p></details>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer>
+      <span>© 2026 Penwise</span>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="mailto:penwise.help@gmail.com">Contact</a>
+    </footer>
+  </div>
+</body>
+</html>

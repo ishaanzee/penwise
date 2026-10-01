@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Penwise Privacy Policy</title>
+  <link rel="icon" href="favicon.png">
+  <style>
+    :root { --bg: #f6f7fb; --surface: #fff; --text: #141a2e; --muted: #555d72; --border: #e1e4ec; --accent: #2f5bea; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { --bg: #0f1220; --surface: #181c2e; --text: #eef0f7; --muted: #a3aac0; --border: #2a2f45; }
+    }
+    :root[data-theme="dark"] { --bg: #0f1220; --surface: #181c2e; --text: #eef0f7; --muted: #a3aac0; --border: #2a2f45; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16.5px/1.65 -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+    a { color: var(--accent); }
+    .top { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; font-weight: 700; }
+    .top img { width: 28px; height: 28px; }
+    h1 { font-size: 34px; letter-spacing: -0.02em; margin: 36px 0 4px; }
+    .updated { color: var(--muted); margin: 0 0 28px; }
+    h2 { font-size: 21px; margin: 32px 0 8px; }
+    .summary { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+    .summary p { margin: 0; }
+    li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="top" href="index.html"><img src="images/icon.png" alt="">Penwise</a>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: October 1, 2026</p>
+
+    <div class="summary">
+      <p><strong>In short:</strong> Penwise edits your PDFs entirely inside your browser. Your documents, signatures and form entries never leave your computer. We don't use analytics or ads, and we don't sell data. The only outside service involved is our payment provider, and only for Pro.</p>
+    </div>
+
+    <h2>Your documents</h2>
+    <p>When you open a PDF in Penwise, it is read, displayed, edited and saved on your own device using code that ships with the extension. Its contents, including anything you type, draw or sign, are never sent to us or to anyone else.</p>
+
+    <h2>PDFs opened from websites</h2>
+    <p>If you ask Penwise to open a PDF that's on a website, Chrome asks your permission for that site. Penwise then downloads that one file directly from the site into the editor, just as your browser would. Nothing is routed through our servers.</p>
+
+    <h2>Data stored on your device</h2>
+    <ul>
+      <li><strong>Saved signatures:</strong> if you leave "Remember on this device" ticked, your signature image is stored in Chrome's local extension storage so you can reuse it. You can delete saved signatures in the signature window at any time, and uninstalling Penwise removes them.</li>
+      <li><strong>Pro status:</strong> whether you've unlocked Pro is cached locally so Pro features keep working offline.</li>
+    </ul>
+
+    <h2>Payments (Penwise Pro)</h2>
+    <p>Pro purchases are handled by <a href="https://extensionpay.com" rel="noopener">ExtensionPay</a>, with card payments processed by <a href="https://stripe.com/privacy" rel="noopener">Stripe</a>. When you upgrade, you enter your email address and payment details on their pages, not in Penwise. We never see your card details.</p>
+    <p>To know whether Pro is unlocked, Penwise contacts ExtensionPay using a random identifier issued for your installation (Chrome may sync it to your other signed-in browsers so Pro carries over). This request contains no information about your documents. ExtensionPay may store your email, purchase history and that identifier to manage your purchase and let you restore Pro on another browser. See ExtensionPay's and Stripe's privacy policies for details.</p>
+
+    <h2>What we don't do</h2>
+    <ul>
+      <li>We don't collect analytics, usage tracking or browsing history.</li>
+      <li>We don't show ads.</li>
+      <li>We don't sell, rent or share your data.</li>
+      <li>We don't use data for anything other than making Penwise work.</li>
+    </ul>
+
+    <h2>Permissions Penwise uses</h2>
+    <ul>
+      <li><strong>Context menus:</strong> adds "Fill &amp; sign this PDF with Penwise" to the right-click menu.</li>
+      <li><strong>Storage:</strong> keeps saved signatures and Pro status on your device.</li>
+      <li><strong>Website access (optional, per site):</strong> only requested when you open a PDF from that site, to download it.</li>
+      <li><strong>extensionpay.com:</strong> lets Penwise know when a purchase completes.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>Penwise is not directed at children under 13 and does not knowingly collect information from them.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, we'll update this page and the date above. Significant changes will also be noted in the extension's release notes.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about privacy? Email <a href="mailto:penwise.help@gmail.com">penwise.help@gmail.com</a>.</p>
+  </main>
+</body>
+</html>
