@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ishaanzee.github.io/penwise/sitemap.xml
