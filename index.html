@@ -16,81 +16,135 @@
   <meta property="og:image" content="https://usepenwise.com/images/1-fill-sign.jpg">
   <style>
     :root {
-      --bg: #f6f7fb; --surface: #fff; --text: #141a2e; --muted: #555d72; --border: #e1e4ec;
-      --accent: #2f5bea; --accent-dark: #2442c9; --gold: #f5b400;
+      --bg: #fbfbfc; --surface: #ffffff; --surface-2: #f4f5f7; --text: #0b0c10; --muted: #61666f;
+      --border: rgba(11,12,16,.09); --accent: #2f5bea; --accent-2: #6d5dfc; --ok: #1a9a5a;
+      --nav-bg: rgba(251,251,252,.72); --shadow: 0 1px 2px rgba(11,12,16,.04), 0 24px 60px -12px rgba(30,45,110,.22);
+      --glow: rgba(47,91,234,.16);
     }
     @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) { --bg: #0f1220; --surface: #181c2e; --text: #eef0f7; --muted: #a3aac0; --border: #2a2f45; }
+      :root:not([data-theme="light"]) { --bg: #07080b; --surface: #0f1115; --surface-2: #14161c; --text: #f2f3f7; --muted: #9096a3;
+        --border: rgba(255,255,255,.09); --nav-bg: rgba(7,8,11,.7); --shadow: 0 1px 2px rgba(0,0,0,.4), 0 24px 60px -12px rgba(0,0,0,.7); --glow: rgba(80,110,255,.22); }
     }
-    :root[data-theme="dark"] { --bg: #0f1220; --surface: #181c2e; --text: #eef0f7; --muted: #a3aac0; --border: #2a2f45; }
+    :root[data-theme="dark"] { --bg: #07080b; --surface: #0f1115; --surface-2: #14161c; --text: #f2f3f7; --muted: #9096a3;
+      --border: rgba(255,255,255,.09); --nav-bg: rgba(7,8,11,.7); --shadow: 0 1px 2px rgba(0,0,0,.4), 0 24px 60px -12px rgba(0,0,0,.7); --glow: rgba(80,110,255,.22); }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 -apple-system, "Segoe UI", Roboto, sans-serif; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body { margin: 0; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased;
+           font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif; }
     a { color: var(--accent); }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-    header.nav { display: flex; align-items: center; gap: 10px; padding: 18px 0; }
-    header.nav img { width: 32px; height: 32px; }
-    header.nav b { font-size: 19px; }
-    header.nav nav { margin-left: auto; display: flex; gap: 22px; font-size: 15px; }
-    header.nav nav a { color: var(--muted); text-decoration: none; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 10px; font-weight: 650;
-           text-decoration: none; background: var(--accent); color: #fff; }
-    .btn:hover { background: var(--accent-dark); }
-    .hero { text-align: center; padding: 56px 0 32px; }
-    .hero h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 18px; }
-    .hero p { font-size: 20px; color: var(--muted); max-width: 640px; margin: 0 auto 28px; }
-    .hero small { display: block; margin-top: 12px; color: var(--muted); font-size: 14px; }
-    .shot { margin: 40px auto 0; max-width: 1000px; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 80px rgba(30,45,110,.22); }
-    .shot img { width: 100%; display: block; }
-    section { padding: 64px 0; }
-    h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.02em; text-align: center; margin: 0 0 36px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
-    .card h3 { margin: 0 0 6px; font-size: 18px; }
-    .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
-    .feature { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: center; margin-bottom: 56px; }
-    .feature:nth-child(even) .text { order: 2; }
-    .feature h3 { font-size: 28px; letter-spacing: -0.02em; margin: 0 0 10px; }
-    .feature p { color: var(--muted); margin: 0; }
-    .feature img { width: 100%; border-radius: 12px; box-shadow: 0 16px 40px rgba(30,45,110,.16); }
-    .pro-tag { display: inline-block; background: var(--gold); color: #3a2a00; font-size: 12px; font-weight: 800; padding: 1px 7px; border-radius: 5px; vertical-align: middle; margin-left: 6px; }
-    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 780px; margin: 0 auto; }
-    .plan { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
-    .plan.pro { border: 2px solid var(--accent); }
-    .plan h3 { margin: 0; font-size: 20px; }
-    .price { font-size: 40px; font-weight: 750; margin: 8px 0 4px; letter-spacing: -0.02em; }
-    .price span { font-size: 16px; font-weight: 500; color: var(--muted); }
-    .plan ul { padding-left: 0; list-style: none; margin: 18px 0 0; display: grid; gap: 8px; }
-    .plan li::before { content: "✓  "; color: #1a9a5a; font-weight: 700; }
-    details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; }
-    summary { font-weight: 650; cursor: pointer; }
-    details p { color: var(--muted); margin: 10px 0 0; }
-    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 14px; display: flex; gap: 18px; flex-wrap: wrap; }
-    @media (max-width: 760px) {
-      .feature { grid-template-columns: 1fr; gap: 18px; }
-      .feature:nth-child(even) .text { order: 0; }
-      header.nav nav { display: none; }
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header class="nav">
-      <img src="images/icon.png" alt=""><b>Penwise</b>
-      <nav><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="guides/">Guides</a><a href="#help">Help</a><a href="privacy.html">Privacy</a></nav>
-    </header>
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
+    header.nav { position: sticky; top: 0; z-index: 10; background: var(--nav-bg); border-bottom: 1px solid var(--border);
+                 -webkit-backdrop-filter: saturate(180%) blur(16px); backdrop-filter: saturate(180%) blur(16px); }
+    .nav-in { display: flex; align-items: center; gap: 10px; height: 56px; }
+    .nav-in img { width: 26px; height: 26px; border-radius: 7px; }
+    .nav-in b { font-size: 16px; letter-spacing: -0.01em; }
+    .nav-in nav { margin-left: auto; display: flex; align-items: center; gap: 4px; font-size: 14px; }
+    .nav-in nav a { color: var(--muted); text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: color .15s, background .15s; }
+    .nav-in nav a:hover { color: var(--text); background: var(--surface-2); }
+    .nav-in nav a.nav-cta { color: #fff; background: var(--text); margin-left: 8px; font-weight: 600; }
+    :root:not([data-theme="light"]) .nav-in nav a.nav-cta { }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .nav-in nav a.nav-cta { color: #07080b; background: #f2f3f7; } }
+    .nav-in nav a.nav-cta:hover { opacity: .88; background: var(--text); color: #fff; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .nav-in nav a.nav-cta:hover { background: #f2f3f7; color: #07080b; } }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 16px;
+           text-decoration: none; background: var(--accent); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 8px 24px -8px rgba(47,91,234,.7);
+           transition: transform .15s, box-shadow .15s, background .15s; }
+    .btn:hover { transform: translateY(-1px); background: #2449d1; }
+    .btn.ghost { background: transparent; color: var(--text); box-shadow: none; border: 1px solid var(--border); }
+    .btn.ghost:hover { background: var(--surface-2); }
+
+    .hero { position: relative; text-align: center; padding: 88px 0 24px; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; left: 50%; top: -200px; width: 900px; height: 700px; transform: translateX(-50%);
+                    background: radial-gradient(closest-side, var(--glow), transparent); pointer-events: none; }
+    .hero > * { position: relative; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border: 1px solid var(--border); border-radius: 999px;
+             font-size: 13px; color: var(--muted); background: var(--surface); margin-bottom: 26px; }
+    .badge i { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
+    .hero h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1.02; letter-spacing: -0.045em; font-weight: 700; margin: 0 auto 20px; max-width: 760px;
+               background: linear-gradient(180deg, var(--text) 40%, var(--muted)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p.sub { font-size: clamp(17px, 2.2vw, 21px); color: var(--muted); max-width: 600px; margin: 0 auto 32px; line-height: 1.5; }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero small { display: block; margin-top: 16px; color: var(--muted); font-size: 13.5px; }
+    .shot { margin: 56px auto 0; max-width: 1000px; padding: 8px; border-radius: 22px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .shot img { width: 100%; display: block; border-radius: 15px; border: 1px solid var(--border); }
+
+    section { padding: 96px 0; }
+    .eyebrow { text-align: center; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+    h2 { font-size: clamp(30px, 4.6vw, 46px); line-height: 1.08; letter-spacing: -0.035em; font-weight: 700; text-align: center; margin: 0 auto 48px; max-width: 700px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px; transition: border-color .2s, transform .2s; }
+    .card:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); transform: translateY(-2px); }
+    .card h3 { margin: 0 0 8px; font-size: 18px; letter-spacing: -0.015em; }
+    .card p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.55; }
+
+    .feature { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; align-items: center; margin-bottom: 20px; padding: 44px;
+               background: var(--surface); border: 1px solid var(--border); border-radius: 26px; }
+    .feature:nth-child(even) .text { order: 2; }
+    .feature h3 { font-size: clamp(24px, 3vw, 32px); line-height: 1.12; letter-spacing: -0.03em; margin: 0 0 12px; }
+    .feature p { color: var(--muted); margin: 0; }
+    .feature img { width: 100%; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 18px 40px -16px rgba(30,45,110,.3); display: block; }
+    .pro-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; vertical-align: middle; margin-left: 8px;
+               color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+
+    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
+    .plan { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; padding: 32px; }
+    .plan.pro { position: relative; border-color: transparent;
+                background: linear-gradient(var(--surface), var(--surface)) padding-box, linear-gradient(135deg, var(--accent), var(--accent-2)) border-box; border: 1.5px solid transparent; }
+    .plan h3 { margin: 0; font-size: 15px; font-weight: 600; color: var(--muted); }
+    .price { font-size: 52px; font-weight: 700; margin: 10px 0 4px; letter-spacing: -0.04em; line-height: 1.1; }
+    .price span { font-size: 16px; font-weight: 500; letter-spacing: 0; color: var(--muted); }
+    .plan ul { padding-left: 0; list-style: none; margin: 22px 0 0; display: grid; gap: 10px; font-size: 15.5px; }
+    .plan li::before { content: "✓"; color: var(--ok); font-weight: 700; margin-right: 10px; }
+
+    details { border-bottom: 1px solid var(--border); padding: 20px 4px; }
+    details:first-of-type { border-top: 1px solid var(--border); }
+    summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; align-items: center; letter-spacing: -0.01em; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 22px; font-weight: 400; color: var(--muted); transition: transform .2s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { color: var(--muted); margin: 12px 0 0; max-width: 640px; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 0 48px; color: var(--muted); font-size: 14px; display: flex; gap: 22px; flex-wrap: wrap; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    footer span { margin-right: auto; }
+
+    @media (max-width: 760px) {
+      section { padding: 64px 0; }
+      .hero { padding-top: 56px; }
+      .feature { grid-template-columns: 1fr; gap: 24px; padding: 24px; border-radius: 20px; }
+      .feature:nth-child(even) .text { order: 0; }
+      .nav-in nav a:not(.nav-cta) { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+  </style><body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <img src="images/icon.png" alt=""><b>Penwise</b>
+      <nav><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="guides/">Guides</a><a href="#help">Help</a><a class="nav-cta" href="https://chromewebstore.google.com/detail/penwise-%E2%80%93-fill-sign-pdfs/imkfncmhccjicfnahkgfkiiblikgdogm">Add to Chrome</a></nav>
+    </div>
+  </header>
+
+  <div class="wrap">
     <div class="hero">
-      <h1>Fill &amp; sign PDFs<br>right in Chrome</h1>
-      <p>Type into forms, add your signature and download, all in a few clicks. Free, with no account, and your files never leave your computer.</p>
-      <a class="btn" id="storeLink" href="https://chromewebstore.google.com/detail/penwise-%E2%80%93-fill-sign-pdfs/imkfncmhccjicfnahkgfkiiblikgdogm">Add to Chrome, it's free</a>
-      <small>No sign-up · No watermark · No upload</small>
+      <span class="badge"><i></i>Free · No account · Files stay on your device</span>
+      <h1>Fill &amp; sign PDFs right in Chrome</h1>
+      <p class="sub">Type into forms, add your signature and download, all in a few clicks. Nothing is uploaded, and there's no watermark.</p>
+      <div class="actions">
+        <a class="btn" id="storeLink" href="https://chromewebstore.google.com/detail/penwise-%E2%80%93-fill-sign-pdfs/imkfncmhccjicfnahkgfkiiblikgdogm">Add to Chrome, it's free</a>
+        <a class="btn ghost" href="#features">See how it works</a>
+      </div>
       <div class="shot"><img src="images/1-fill-sign.jpg" alt="Penwise filling and signing a rental application"></div>
     </div>
   </div>
 
   <section>
     <div class="wrap">
-      <h2>Why people switch to Penwise</h2>
+      <p class="eyebrow">Why Penwise</p>
+      <h2>The PDF tool that stays out of your way</h2>
       <div class="grid">
         <div class="card"><h3>Free means free</h3><p>Filling, signing and downloading are free with no watermark. You won't hit a paywall after you've filled out the whole form.</p></div>
         <div class="card"><h3>Private by design</h3><p>Your PDFs are processed inside your browser. Nothing is uploaded, so nothing can leak.</p></div>
@@ -102,6 +156,8 @@
 
   <section id="features">
     <div class="wrap">
+      <p class="eyebrow">Features</p>
+      <h2>Everything you need, nothing you don't</h2>
       <div class="feature">
         <div class="text"><h3>Your signature, your way</h3><p>Draw it with your mouse or trackpad, type it in a handwriting font, or upload a photo. We remove the white background for you. Saved signatures stay on your device.</p></div>
         <img src="images/2-signature.jpg" alt="Signature dialog with drawn, typed and uploaded options">
@@ -119,7 +175,8 @@
 
   <section id="pricing">
     <div class="wrap">
-      <h2>Simple pricing</h2>
+      <p class="eyebrow">Pricing</p>
+      <h2>Free to use. Pay once for the extras.</h2>
       <div class="pricing">
         <div class="plan">
           <h3>Free</h3>
@@ -137,7 +194,8 @@
 
   <section id="help">
     <div class="wrap" style="max-width: 760px">
-      <h2>Questions</h2>
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions, answered</h2>
       <details><summary>Are my files uploaded anywhere?</summary><p>No. Penwise opens, edits and saves PDFs entirely inside your browser. The only thing it ever contacts is our payment provider (ExtensionPay), to check whether Pro is unlocked, and your documents are never part of that.</p></details>
       <details><summary>How do I open a PDF?</summary><p>Click the Penwise icon in your toolbar and drop in a file. If a PDF is already open in a tab, clicking the icon opens that PDF. You can also right-click any PDF link and choose "Fill &amp; sign this PDF with Penwise".</p></details>
       <details><summary>Why does Penwise ask for access to a website?</summary><p>When you open a PDF from a website, Chrome needs your OK for Penwise to download that one file. It asks one site at a time, and only when you request it.</p></details>
