@@ -1,0 +1,29 @@
+/* Web build only (usepenwise.com/app/): a slim bar along the bottom that
+   explains this is the in-browser version and points to the extension. */
+:root { --webbar-h: 34px; }
+.brand { color: inherit; text-decoration: none; }
+.web-bar {
+  position: fixed; inset: auto 0 0 0; height: var(--webbar-h); z-index: 20;
+  display: flex; align-items: center; gap: 6px; padding: 0 14px;
+  background: var(--surface); border-top: 1px solid var(--border);
+  color: var(--muted); font-size: 12.5px; white-space: nowrap; overflow: hidden;
+}
+.web-bar b { color: var(--text); font-weight: 600; }
+.web-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.web-bar a:hover { text-decoration: underline; }
+.web-bar-home { margin-left: auto; }
+#viewerContainer { bottom: var(--webbar-h); }
+.empty { inset: var(--toolbar-h) 0 var(--webbar-h) 0; }
+.web-note { margin: 18px 0 0 !important; font-size: 12.5px; }
+@media (max-width: 1100px) { .web-bar-more { display: none; } }
+@media (max-width: 640px) { .web-bar > span:first-child { display: none; } }
+/* Phones: the extension never had to fit here. Let the tool row scroll and
+   keep Open and Download in view. */
+@media (max-width: 760px) {
+  .toolbar { gap: 4px; padding: 0 8px; }
+  .toolbar .sep, .toolbar .spacer, .zoom, .page-info, #printBtn { display: none; }
+  .tools { flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .tools::-webkit-scrollbar { display: none; }
+  .tool { flex: none; }
+  #openBtn, #downloadBtn { flex: none; padding: 0 10px; }
+}
