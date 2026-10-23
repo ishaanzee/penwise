@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Stop Adobe Acrobat Opening PDFs in Chrome (and Remove the Extension)</title>
+  <meta name="description" content="Step by step: turn off the Acrobat extension's open-in-Acrobat setting, deal with the AI prompts, remove the extension, stop it coming back and set Chrome's own PDF viewer back.">
+  <link rel="canonical" href="https://usepenwise.com/guides/stop-adobe-acrobat-opening-pdfs-chrome.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Stop Adobe Acrobat Opening PDFs in Chrome (and Remove the Extension)">
+  <meta property="og:description" content="Step by step: turn off the Acrobat extension's open-in-Acrobat setting, deal with the AI prompts, remove the extension, stop it coming back and set Chrome's own PDF viewer back.">
+  <meta property="og:url" content="https://usepenwise.com/guides/stop-adobe-acrobat-opening-pdfs-chrome.html">
+  <meta property="og:image" content="https://usepenwise.com/images/1-fill-sign.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to Stop Adobe Acrobat Opening PDFs in Chrome (and Remove the Extension)", "description": "Step by step: turn off the Acrobat extension's open-in-Acrobat setting, deal with the AI prompts, remove the extension, stop it coming back and set Chrome's own PDF viewer back.", "datePublished": "2026-10-23", "dateModified": "2026-10-23", "author": {"@type": "Organization", "name": "Penwise"}, "mainEntityOfPage": "https://usepenwise.com/guides/stop-adobe-acrobat-opening-pdfs-chrome.html"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I stop Adobe Acrobat opening PDFs in Chrome?", "acceptedAnswer": {"@type": "Answer", "text": "Go to chrome://extensions, select Details on the Adobe Acrobat extension, open Extension options and turn off the default view options (online links, Gmail and Google Drive), then save. Or turn the extension off with its toggle. If PDFs you download open in the Acrobat desktop app, also untick 'Always open PDFs downloaded from the web' in Acrobat's Preferences > General, per Adobe's help."}}, {"@type": "Question", "name": "Why does the Adobe Acrobat extension keep coming back?", "acceptedAnswer": {"@type": "Answer", "text": "Adobe's deployment documentation says that, by default, installing the Continuous track of Acrobat Reader installs the Chrome extension. If you use Reader on Windows, it can reappear after a Reader install. IT admins can set the installer property ENABLE_CHROMEEXT to 0 to prevent it."}}, {"@type": "Question", "name": "Can I turn off the Adobe AI Assistant in the Chrome extension?", "acceptedAnswer": {"@type": "Answer", "text": "As of October 2026, Adobe documents an admin policy (DisableGenAI set to true) that turns off generative AI features in the Acrobat extension for an organization. We could not find an Adobe help page describing a per-user switch inside the extension. Turning the extension off or removing it removes the prompts. In the Acrobat desktop app, Preferences > Generative AI has an 'Enable generative AI features' checkbox."}}, {"@type": "Question", "name": "How do I make Chrome the default PDF viewer again?", "acceptedAnswer": {"@type": "Answer", "text": "Turn off or remove the Acrobat extension, then go to chrome://settings/content/pdfDocuments and select 'Open PDFs in Chrome'."}}]}</script>
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" href="guide.css?v=5">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../index.html"><img src="../images/icon.png" alt="">Penwise</a>
+    <nav><a href="../index.html#features">Features</a><a href="../index.html#pricing">Pricing</a><a href="index.html">Guides</a><a class="nav-cta" href="https://chromewebstore.google.com/detail/penwise-%E2%80%93-fill-sign-pdfs/imkfncmhccjicfnahkgfkiiblikgdogm">Add to Chrome</a></nav>
+  </div>
+</header>
+<main>
+  <h1>How to stop Adobe Acrobat opening PDFs in Chrome</h1>
+  <p class="lede">If every PDF you click in Chrome now opens in Acrobat, with sign-in and AI prompts, the Adobe Acrobat extension is doing it. You can switch off just that behaviour, turn the extension off, or remove it, and get Chrome's own viewer back. Here's each step, checked against Adobe's and Google's help pages.</p>
+  <p class="meta">Updated October 2026 · 6 min read</p>
+
+  <p>First, to be fair to Adobe: lots of people like the extension. Its <a href="https://chromewebstore.google.com/detail/efaidnbmnnnibpcajpcglclefindmkaj/reviews">Chrome Web Store listing</a> shows 349 million users and 4.38 stars from 64,263 ratings (as of October 2026). But the low-star reviews keep making the same points. One from October 2026 says it should "NOT come up automatically", and another from the same month asks Adobe to stop the AI pop-ups and sign-in prompts. If that's you, read on.</p>
+
+  <h2>Step 1: turn off just the "open in Acrobat" behaviour</h2>
+  <p>This keeps the extension installed but stops it taking over PDFs. Adobe's help mentions an <strong>Open all PDFs in Acrobat</strong> setting in the extension, and <a href="https://helpx.adobe.com/acrobat/web/use-acrobat-extensions/acrobat-for-google/disable-default-pdf-opening.html">its Gmail and Google Drive page</a> (updated August 2026) shows where the options are:</p>
+  <ol>
+    <li>In Chrome, open the three-dot menu, then <strong>Extensions → Manage extensions</strong> (or type <code>chrome://extensions</code> in the address bar).</li>
+    <li>Find <strong>Adobe Acrobat: PDF edit, convert, sign tools</strong> and select <strong>Details</strong>.</li>
+    <li>Select <strong>Extension options</strong>.</li>
+    <li>Turn off the default view options for online links, Gmail and Google Drive. Adobe says these control "whether PDFs from Gmail, Google Drive, and online links open automatically in Acrobat."</li>
+    <li>Select <strong>Save preferences</strong>.</li>
+  </ol>
+  <p>For Gmail only, there's a shortcut: open a PDF from Gmail in the Acrobat viewer, select <strong>More options</strong>, and turn off <strong>Open PDFs from Gmail in Acrobat</strong>. The exact labels can change between extension updates, so look for the closest match.</p>
+
+  <div class="tip"><p><strong>Downloaded PDFs opening in the Acrobat app is a separate setting.</strong> Adobe <a href="https://helpx.adobe.com/acrobat/using/auto-open-pdfs.html">says</a> turning off the extension "does not stop PDFs from automatically opening in the Acrobat app after you download them in Chrome." To stop that on Windows, open Acrobat or Reader, press <strong>Ctrl + K</strong>, go to <strong>General</strong> and untick <strong>Always open PDFs downloaded from the web</strong>. In Chrome, you can also check your recent downloads, right-click a PDF and untick <strong>Always open files of this type</strong> (<a href="https://support.google.com/chrome/answer/95759?co=GENIE.Platform%3DDesktop">Chrome help</a>).</p></div>
+
+  <h2>Step 2: the AI Assistant and pop-ups</h2>
+  <p>This is the hardest one to switch off on its own. As of October 2026, here's what Adobe documents:</p>
+  <ul>
+    <li><strong>For organizations:</strong> Adobe's <a href="https://helpx.adobe.com/acrobat/using/turn-off-generative-ai-gpo-enterprise.html">enterprise configuration page</a> (updated September 2026) describes a <code>DisableGenAI</code> policy. On Windows, an admin creates a string value named <code>DisableGenAI</code>, set to <code>true</code>, under <code>HKLM\Software\Policies\Google\Chrome\3rdparty\extensions\efaidnbmnnnibpcajpcglclefindmkaj\policy</code>, then checks it on <code>chrome://policy</code>. On macOS, Adobe gives an equivalent managed-preferences profile. You'll need admin rights, and it's meant for IT teams.</li>
+    <li><strong>For the desktop app:</strong> Adobe's <a href="https://helpx.adobe.com/acrobat/desktop/use-acrobat-ai/set-up-acrobat-generative-ai/turn-off-ai.html">help page</a> says to go to Preferences → <strong>Generative AI</strong> and untick <strong>Enable generative AI features</strong>. That applies to Acrobat and Reader on your computer, not the Chrome extension.</li>
+  </ul>
+  <p>We couldn't find an Adobe help page that describes a per-user AI switch inside the Chrome extension. Check its Extension options page in case your version has one. If it doesn't, Step 1 keeps the extension out of the way until you click it, and Steps 3 to 5 remove it completely.</p>
+
+  <h2>Step 3: turn off or remove the extension</h2>
+  <p>From <a href="https://support.google.com/chrome_webstore/answer/2664769">Chrome's help</a>:</p>
+  <ul>
+    <li><strong>Turn it off (reversible):</strong> go to <code>chrome://extensions</code> and switch off the toggle on the Adobe Acrobat card. You can turn it back on any time.</li>
+    <li><strong>Remove it:</strong> right-click the Acrobat icon in the toolbar and choose <strong>Remove from Chrome</strong>. Or, on <code>chrome://extensions</code>, select <strong>Remove</strong> on the Acrobat card and confirm.</li>
+  </ul>
+  <p>Removing the extension doesn't uninstall Acrobat or Reader from your computer. It only affects Chrome.</p>
+
+  <h2>Step 4: stop it coming back</h2>
+  <p>Some reviewers say the extension "installed itself" (September 2026). Adobe's own deployment documentation explains where it often comes from. Its <a href="https://www.adobe.com/devnet-docs/acrobatetk/tools/AdminGuide/properties.html">installer properties list</a> says: "By default, installing the Continuous track of Reader installs the Chrome extension." Adobe's <a href="https://helpx.adobe.com/acrobat/kb/acrobat-reader-chrome-extension.html">extension help page</a> also says that once Reader is installed, "you'll receive the new viewer option the next time you open a PDF in Chrome."</p>
+  <ul>
+    <li><strong>If you don't use Acrobat Reader on your computer,</strong> uninstalling it removes the usual way the extension gets added back.</li>
+    <li><strong>If you keep Reader,</strong> remove the extension again if it reappears after an install, and don't click <strong>Set as default</strong> when the Acrobat viewer offers it.</li>
+    <li><strong>IT admins deploying Reader on Windows</strong> can set the installer property <code>ENABLE_CHROMEEXT=0</code>, which Adobe says "prevents it's install" (Adobe's wording).</li>
+  </ul>
+  <p>We couldn't find Adobe documentation saying exactly when Reader updates re-add the extension on personal computers, so we haven't given steps for that.</p>
+
+  <h2>Step 5: set Chrome's own PDF viewer back</h2>
+  <ol>
+    <li>Type <code>chrome://settings/content/pdfDocuments</code> in the address bar. Or go to <strong>Settings → Privacy and security → Site settings → Additional content settings → PDF documents</strong>.</li>
+    <li>Select <strong>Open PDFs in Chrome</strong>. (The other option, <strong>Download PDFs</strong>, saves every PDF instead of showing it.)</li>
+  </ol>
+  <p>Open any PDF link to check. It should now open in Chrome's own viewer (<a href="https://support.google.com/chrome/answer/95759?co=GENIE.Platform%3DDesktop">Chrome help</a>).</p>
+
+  <h2>What to use instead</h2>
+  <h3>Chrome's built-in viewer (free, already there)</h3>
+  <p>For reading, and for a lot of basic marking up, you may not need anything else. According to <a href="https://support.google.com/chrome/answer/16215622?co=GENIE.Platform%3DDesktop">Google's help page</a>, the viewer can highlight, draw, add typed text, fill forms and draw a signature. It also runs OCR on scanned PDFs on your device. It can't merge files or truly redact, and it can't save a signature to reuse yet, though Google is working on that. Our guide to <a href="chrome-built-in-pdf-editor.html">Chrome's built-in PDF editor</a> covers what it can and can't do.</p>
+  <h3>Acrobat Reader on the desktop</h3>
+  <p>If you liked Adobe's tools but not having them in the browser, the free Reader app still has Fill &amp; Sign. Turn off the auto-open setting from Step 1's tip so it only opens when you choose.</p>
+
+  <h3>Penwise</h3>
+  <p class="disclosure">Disclosure: we make Penwise.</p>
+  <p>Penwise is a free Chrome extension for filling, signing and tidying up PDFs, and it was built with this page's problems in mind:</p>
+  <ul>
+    <li><strong>It never takes over Chrome's PDF viewer.</strong> It opens only when you click its icon or right-click and choose "Fill &amp; sign this PDF with Penwise".</li>
+    <li><strong>No account and no AI pop-ups.</strong> Files are never uploaded. Everything runs in your browser.</li>
+    <li><strong>Fill any PDF</strong>, including ones without form fields. Add text, check marks, dates, highlights and white-out. Sign by drawing, typing or uploading an image, and save your signature on your device.</li>
+    <li><strong>Redact properly</strong> (removes the content, not just covers it), <strong>organize pages</strong> and <strong>merge PDFs</strong>. All free, with no watermark.</li>
+    <li><strong>Autosave</strong> offers your unsaved work back if the tab closes. <strong>My details</strong> saves your name, address, email and phone once so you can place them with a click. Both are stored only on your device.</li>
+  </ul>
+  <p>What it doesn't do: OCR, editing existing text, compression, conversion to or from Word, multi-person signing workflows, audit trails or certificate-based digital signatures. If you need those, Acrobat is still the better tool. Not on Chrome? The same tools work in the <a href="../app/">free web version</a>, with nothing uploaded. If you're weighing up Adobe's paid plans, see <a href="adobe-acrobat-cost-cheaper-alternative.html">what Acrobat costs and the cheaper options</a>.</p>
+
+  <div class="cta">
+    <p><strong>Fill and sign PDFs in Chrome, only when you ask.</strong> Penwise is free, needs no account and never uploads your files.</p>
+    <a class="btn" href="https://chromewebstore.google.com/detail/penwise-%E2%80%93-fill-sign-pdfs/imkfncmhccjicfnahkgfkiiblikgdogm">Add Penwise to Chrome, free</a>
+    <p><a href="../app/">Or try it in your browser, free</a></p>
+  </div>
+
+  <footer><a href="../index.html">Penwise</a> · <a href="index.html">More guides</a> · <a href="../privacy.html">Privacy</a></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF Says "Please wait..."? How to Open an XFA Form</title>
+  <meta name="description" content="Seeing &quot;Please wait... your PDF viewer may not be able to display this type of document&quot;? It's an XFA form. Why Chrome, Edge and Preview can't open it, and what works.">
+  <link rel="canonical" href="https://usepenwise.com/guides/pdf-please-wait-error-xfa-form.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="PDF Says &quot;Please wait...&quot;? How to Open an XFA Form">
+  <meta property="og:description" content="Seeing &quot;Please wait... your PDF viewer may not be able to display this type of document&quot;? It's an XFA form. Why Chrome, Edge and Preview can't open it, and what works.">
+  <meta property="og:url" content="https://usepenwise.com/guides/pdf-please-wait-error-xfa-form.html">
+  <meta property="og:image" content="https://usepenwise.com/images/1-fill-sign.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PDF Says \"Please wait...\"? How to Open an XFA Form", "description": "Seeing \"Please wait... your PDF viewer may not be able to display this type of document\"? It's an XFA form. Why Chrome, Edge and Preview can't open it, and what works.", "datePublished": "2026-10-23", "dateModified": "2026-10-23", "author": {"@type": "Organization", "name": "Penwise"}, "mainEntityOfPage": "https://usepenwise.com/guides/pdf-please-wait-error-xfa-form.html"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+    {"@type": "Question", "name": "Why does my PDF say \"Please wait... If this message is not eventually replaced by the proper contents of the document\"?", "acceptedAnswer": {"@type": "Answer", "text": "The file is almost certainly a dynamic XFA form, made with Adobe LiveCycle Designer. The real form is stored as XML inside the PDF, and the only page most viewers can show is a placeholder with that message. Chrome, Edge, Mac Preview and most other PDF apps can't build the real form from the XML."}},
+    {"@type": "Question", "name": "How do I open an XFA form that won't open in Chrome?", "acceptedAnswer": {"@type": "Answer", "text": "Save the file to your computer instead of opening it in the browser, then open it in the free desktop version of Adobe Acrobat Reader for Windows or Mac. Opening it from the browser tab keeps using the browser's viewer, which can't display it."}},
+    {"@type": "Question", "name": "Can I fill an XFA form on a phone, iPad or Chromebook?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. Adobe's mobile Acrobat apps don't support XFA forms, and there is no desktop Acrobat Reader for ChromeOS. The practical options are to use a Windows or Mac computer, or to ask the agency for an online form or a non-XFA version."}},
+    {"@type": "Question", "name": "Can Penwise open XFA forms?", "acceptedAnswer": {"@type": "Answer", "text": "No. Penwise is built on pdf.js and doesn't turn on pdf.js's experimental XFA rendering, so a dynamic XFA form shows the same \"Please wait...\" page in Penwise as in Chrome. Use Adobe Acrobat Reader on a computer for these forms."}}
+  ]}</script>
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" href="guide.css?v=5">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../index.html"><img src="../images/icon.png" alt="">Penwise</a>
+    <nav><a href="../index.html#features">Features</a><a href="../index.html#pricing">Pricing</a><a href="index.html">Guides</a><a class="nav-cta" href="https://chromewebstore.google.com/detail/penwise-%E2%80%93-fill-sign-pdfs/imkfncmhccjicfnahkgfkiiblikgdogm">Add to Chrome</a></nav>
+  </div>
+</header>
+<main>
+  <h1>PDF says "Please wait..."? Here's how to open it</h1>
+  <p class="lede">You open a government form and get a single page that says <em>"Please wait... If this message is not eventually replaced by the proper contents of the document, your PDF viewer may not be able to display this type of document."</em> Waiting won't help. The file is a special kind of form that most PDF viewers can't show, and the fix is to open it in a different program.</p>
+  <p class="meta">Updated October 2026 · 6 min read</p>
+
+  <h2>What the message actually means</h2>
+  <p>The file is almost certainly an <strong>XFA form</strong> (XML Forms Architecture), usually built with Adobe's LiveCycle Designer. A normal PDF form has fields placed on fixed pages. A <em>dynamic</em> XFA form stores the form as XML inside the PDF, and the viewer has to build the pages from that XML when you open it. Pages can grow, sections can appear as you answer, and buttons can run checks.</p>
+  <p>To be safe, the author puts one ordinary placeholder page in the file, and that's the "Please wait..." page. A viewer that understands XFA hides it and draws the real form. A viewer that doesn't shows you the placeholder and stops. An <a href="https://community.adobe.com/t5/acrobat-reader-discussions/unable-to-open-xfa-dynamic-pdf-in-ios-mac-and-android/td-p/11420280">Adobe forum answer from a former Adobe principal scientist</a> sums it up: "XFA forms are not supported by anything other than the desktop versions of Adobe Acrobat Reader and Adobe Acrobat."</p>
+  <p>XFA is an old format. The PDF 2.0 standard moved it to its list of deprecated features (the <a href="https://loc.gov/preservation/digital/formats/fdd/fdd000474.shtml">Library of Congress format notes</a> list it under features "dropped or deprecated in PDF 2.0"), but plenty of agencies still publish forms in it.</p>
+
+  <h2>Which apps can open it (as of October 2026)</h2>
+  <table>
+    <tr><th>App</th><th>Opens dynamic XFA?</th><th>Notes</th></tr>
+    <tr><td>Adobe Acrobat Reader (Windows, Mac desktop)</td><td>Yes</td><td>Free. This is what these forms are made for.</td></tr>
+    <tr><td>Chrome's built-in viewer</td><td>No</td><td>The Chromium issue "XFA forms don't work yet" is <a href="https://issues.chromium.org/issues/40084716">still open</a>, with 65 stars.</td></tr>
+    <tr><td>Microsoft Edge</td><td>No</td><td>Only organizations that set up <a href="https://mc.merill.net/message/MC1072406">Internet Explorer mode</a> with the Adobe plug-in can view them.</td></tr>
+    <tr><td>Firefox's built-in viewer</td><td>Partly</td><td>Firefox 93 added support for "<a href="https://www.mozilla.org/firefox/93.0/releasenotes/">filling more forms (XFA-based forms)</a>", and it's on by default. Not a full copy of Adobe's engine.</td></tr>
+    <tr><td>Mac Preview</td><td>No</td><td>Shows the placeholder or a blank form.</td></tr>
+    <tr><td>Acrobat on iPhone, iPad, Android</td><td>No</td><td>Adobe's mobile apps don't support XFA.</td></tr>
+    <tr><td>Penwise</td><td>No</td><td>See below.</td></tr>
+  </table>
+
+  <h2>Fix 1: download it and open it in Adobe Acrobat Reader</h2>
+  <p>This works for almost everyone with a Windows or Mac computer.</p>
+  <ol>
+    <li><strong>Don't click the link to open it.</strong> That opens it in your browser's viewer again. Instead, right-click the link and choose <strong>Save link as</strong> (Chrome, Edge) or <strong>Download linked file</strong> (Safari). If it already opened in a tab, use the download button in the viewer's toolbar.</li>
+    <li>Install <a href="https://www.adobe.com/acrobat/pdf-reader.html">Adobe Acrobat Reader</a> if you don't have it. Adobe says it's "free to download and use without a subscription." You don't need the paid Acrobat Pro.</li>
+    <li>Find the saved file, right-click it and choose <strong>Open with → Adobe Acrobat Reader</strong>. Double-clicking may still open it in Preview or your browser.</li>
+    <li>Fill it in, save it, and reopen the saved copy in Reader to check your answers stuck.</li>
+  </ol>
+  <p>This is exactly what Canada's immigration department tells people. IRCC's help page "<a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=660">I can't open my application form in PDF format</a>" walks through saving the link and opening it with Adobe Reader, and says forms with a <strong>Validate</strong> button need "a computer with Adobe Reader 10 or higher."</p>
+
+  <div class="tip"><p><strong>Still seeing "Please wait" inside Reader?</strong> Check you're in the desktop app, not Reader's browser extension, and update Reader. If it still won&rsquo;t open, download a fresh copy from the agency&rsquo;s site rather than reusing one you saved from another viewer.</p></div>
+
+  <h2>Fix 2: ask for (or look for) a different version</h2>
+  <p>Many agencies offer another way in, so check the page you downloaded from before you install anything:</p>
+  <ul>
+    <li><strong>An online form or portal.</strong> Lots of applications that used to be XFA PDFs can now be done in an online account. This is often the easiest route on a phone.</li>
+    <li><strong>A "print" or non-fillable version</strong> you can complete by hand or with a tool that adds text on top of the page.</li>
+    <li><strong>The office itself.</strong> Ask whether they accept a different format. IRCC, for example, says visa application centre staff may ask you to fill the form in again at their kiosks.</li>
+  </ul>
+  <p>Don't convert the form yourself unless the agency says that's fine. Some XFA forms, like IRCC's validated forms, add a barcode or check your answers, and a flattened copy loses that.</p>
+
+  <h2>On a Mac</h2>
+  <p>Mac Preview can't display these forms. Even if it opens something, it may look blank or empty: <a href="https://www.cicnews.com/2024/05/six-common-issues-with-ircc-applications-and-how-to-fix-them-0544161.html">CIC News</a>, writing about IRCC forms, warns that viewers "like Microsoft programs, or 'Preview' on Apple operating systems" may show them "as a blank file." Install Acrobat Reader for Mac and use <strong>Open with</strong> as in Fix 1.</p>
+
+  <h2>On a Chromebook, iPhone, iPad or Android</h2>
+  <p>Honestly, your options are limited. Adobe's mobile apps don't support XFA forms, and there's no desktop Acrobat Reader for ChromeOS. What you can do:</p>
+  <ul>
+    <li>Use a Windows or Mac computer: a friend's, a library's, or one at work.</li>
+    <li>Use the agency's online form if there is one.</li>
+    <li>Ask the agency for a non-XFA version or another way to apply.</li>
+    <li>If the form is simple and doesn't need validating, a browser with XFA support (like Firefox on a computer) may display it. Check every page before you rely on it.</li>
+  </ul>
+  <p>Some third-party mobile apps claim XFA support. We haven't verified them, so we're not recommending any.</p>
+
+  <h2>Which government forms are XFA?</h2>
+  <p>Fewer than you might think. Canada's IRCC immigration forms with a Validate button are the best-known case. They're built for Adobe Reader, and other viewers show the "Please wait" page or a blank form. Many US federal forms are not dynamic XFA. When we opened Form 1040 and Form W-9 from irs.gov and Forms I-130 and I-765 from uscis.gov in October 2026, all of them loaded as normal PDFs with ordinary fillable fields. If your form opens normally in Chrome or Preview, you don't have an XFA problem. See <a href="fill-pdf-form-free.html">how to fill a PDF form for free</a> instead.</p>
+
+  <h2>Can Penwise open XFA forms?</h2>
+  <p class="disclosure">Disclosure: we make Penwise.</p>
+  <p><strong>No, and it isn't a fix for this error.</strong> Penwise uses Mozilla's pdf.js to display PDFs. pdf.js has an XFA mode, but it's switched off by default (its <code>enableXfa</code> option defaults to false), and Penwise doesn't turn it on. A dynamic XFA form shows the same "Please wait..." page in Penwise as in Chrome. For these forms, use Adobe Acrobat Reader.</p>
+  <p>Where Penwise does help is with the normal PDFs: the non-XFA version an agency sends you, or forms that open fine but have no fields to type in. It fills form fields, adds text anywhere on the page (so it works on <a href="fill-non-fillable-pdf.html">non-fillable PDFs</a> too), adds checkmarks, dates and signatures, and downloads without a watermark. <strong>My details</strong> saves your name, address, email and phone once so you can place or fill them with a click. <strong>Autosave</strong> offers your unsaved work back if the tab closes. Everything runs in your browser and stays on your device. Nothing is uploaded and there's no account. It's free, including redaction, organizing pages and merging. There's an extension and a <a href="../app/">web version</a>.</p>
+
+  <div class="cta">
+    <p><strong>For regular PDF forms: fill and sign free, right in Chrome.</strong> No account, nothing uploaded.</p>
+    <a class="btn" href="https://chromewebstore.google.com/detail/penwise-%E2%80%93-fill-sign-pdfs/imkfncmhccjicfnahkgfkiiblikgdogm">Add Penwise to Chrome, free</a>
+    <p><a href="../app/">or try it in your browser, free</a></p>
+  </div>
+
+  <footer><a href="../index.html">Penwise</a> · <a href="index.html">More guides</a> · <a href="../privacy.html">Privacy</a></footer>
+</main>
+</body>
+</html>

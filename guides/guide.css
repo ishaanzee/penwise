@@ -76,3 +76,4 @@ main.wide { max-width: 1080px; padding: 0 24px 96px; }
   table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: normal; }
   th, td { min-width: 110px; }
 }
+main code { overflow-wrap: anywhere; word-break: break-word; }
