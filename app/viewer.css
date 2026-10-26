@@ -107,6 +107,9 @@ body.has-banner #viewerContainer { top: calc(var(--toolbar-h) + 46px); }
 .drop-overlay[hidden] { display: none; }
 
 /* Placement overlay */
+/* pdf.js gives each form field its own z-index, which passes 30 on long forms.
+   Keep them all below our layer so tools and placed items always get the clicks. */
+.page > .annotationLayer { z-index: 1; }
 .pw-layer { position: absolute; inset: 0; z-index: 30; pointer-events: none; }
 body[data-tool]:not([data-tool="select"]) .pw-layer { pointer-events: auto; cursor: crosshair; }
 body[data-tool="text"] .pw-layer { cursor: text; }
