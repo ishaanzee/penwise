@@ -152,6 +152,8 @@ body[data-tool="text"] .pw-layer { cursor: text; }
 .pw-item.selected .pw-handle, .pw-item.selected .pw-del { display: block; }
 .pw-item.selected .pw-colors { display: flex; }
 
+.pw-snap { position: absolute; pointer-events: none; border-radius: 2px; background: rgba(47, 91, 234, .10); box-shadow: inset 0 0 0 1.5px rgba(47, 91, 234, .55); }
+.pw-snap.line { background: none; box-shadow: none; border-bottom: 2px solid rgba(47, 91, 234, .7); margin-top: -1px; }
 .pw-draft { position: absolute; border: 1.5px dashed var(--accent); background: rgba(47, 91, 234, .08); pointer-events: none; }
 
 /* Signature dialog */
